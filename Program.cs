@@ -17,7 +17,7 @@ namespace ConsoleApplication
 				.UseStartup<Startup>() //Startup class in startup.cs
 				.UseUrls("http://localhost:5050") //base url
 				.Build();
-				
+			Console.Write("Server Run~~\n");
 			host.Run();
         }
     }
