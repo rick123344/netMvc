@@ -15,7 +15,7 @@ namespace ConsoleApplication
 				.UseContentRoot(Directory.GetCurrentDirectory()) //access view
 				.UseKestrel()	//services api
 				.UseStartup<Startup>() //Startup class in startup.cs
-				.UseUrls("http://localhost:5050") //base url
+				//.UseUrls("http://localhost:5050") //base url
 				.Build();
 			Console.Write("Server Run~~\n");
 			host.Run();

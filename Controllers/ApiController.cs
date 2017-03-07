@@ -1,9 +1,11 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 namespace ConsoleApplication.controllers{
 	// to be controller , two important point
 	// 1. => call class name end by "Controller" ,eg.=>testController(called POCO)
@@ -16,5 +18,6 @@ namespace ConsoleApplication.controllers{
 				time = DateTime.Now
 			};
 		}
+		
 	}
 }
