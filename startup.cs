@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft​.AspNetCore​.Mvc​.Razor;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Diagnostics;//handle error message
+
 namespace ConsoleApplication{
 	public class Startup{
 		public void ConfigureServices(IServiceCollection services){
@@ -18,8 +22,27 @@ namespace ConsoleApplication{
 			});
 			Console.Write("Add Path\n");
 		}
-		public void Configure(IApplicationBuilder app){
-			//app.UseDeveloperExceptionPage();
+		//public IConfigurationRoot Configuration { get; }
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env,ILoggerFactory loggerFactory){
+			
+            //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            /*loggerFactory.AddDebug();
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+                app.UseBrowserLink();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+
+            app.UseStaticFiles();
+
+            app.UseIdentity();*/
+			app.UseStaticFiles();
 			app.UseMvc(routes=>{
 				routes.MapRoute(
                     name: "default",
@@ -32,13 +55,7 @@ namespace ConsoleApplication{
 	//View Engine
 	public class ViewLocationExpander: IViewLocationExpander {
 
-		/// <summary>
-		/// Used to specify the locations that the view engine should search to 
-		/// locate views.
-		/// </summary>
-		/// <param name="context"></param>
-		/// <param name="viewLocations"></param>
-		/// <returns></returns>
+		//Used to specify the locations that the view engine should search to 
 		public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations) {
 			//{2} is area, {1} is controller,{0} is the action
 			string[] locations = new string[] { "/Views/{2}/{1}/{0}.aspx"};
