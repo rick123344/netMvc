@@ -13,7 +13,7 @@ Follow step using windows command line.
 $ dotnet run
 ```
 
-Visit http://localhost:5000/
+Visit [http://localhost:5000/](http://localhost:5000/)
 
 **Enjoy ~**
 
